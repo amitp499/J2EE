@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <context-param>
+    <param-name>CompanyName</param-name>
+    <param-value>JP Morgan Chase</param-value>
+  </context-param>
+  
+  
+  <servlet>
+  <servlet-name>p3</servlet-name>
+  <servlet-class>com.jp.config.servlets.Process3</servlet-class>
+  <init-param>
+  		<param-name>pageHead</param-name>
+  		<param-value>Employee List</param-value>
+  </init-param>
+  
+  <load-on-startup>1</load-on-startup>
+  </servlet>
+  
+  <servlet-mapping>
+  <servlet-name>p3</servlet-name>  
+  <url-pattern>/Process3</url-pattern>
+  </servlet-mapping>
+</web-app>
