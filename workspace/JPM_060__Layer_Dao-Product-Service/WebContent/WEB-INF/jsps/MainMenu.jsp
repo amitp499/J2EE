@@ -10,7 +10,7 @@
 	<h3 align = "center">Main Menu</h3>
 	<ul>
 		<li><a href="productList.net">View Product List</a></li>
-		<li><a href="newJoining.net">Add New Product</a></li>
+		<li><a href="AddProduct.net">Add New Product</a></li>
 	</ul>
 </body>
 </html>

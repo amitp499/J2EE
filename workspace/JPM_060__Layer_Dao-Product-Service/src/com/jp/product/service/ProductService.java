@@ -11,4 +11,6 @@ public interface ProductService {
 	
 	public Product detailsOfProducts(int pId) throws ProductException;
 	
+	public boolean addNewProducts(Product prd) throws ProductException;
+	
 }

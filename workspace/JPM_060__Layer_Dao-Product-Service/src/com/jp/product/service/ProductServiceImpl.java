@@ -28,6 +28,13 @@ public class ProductServiceImpl implements ProductService {
 		return prdser.getProductDetails(pId);
 		
 	}
+
+	@Override
+	public boolean addNewProducts(Product prd) throws ProductException {
+		
+		return prdser.addProducts(prd);
+		
+	}
 	
 	
 	

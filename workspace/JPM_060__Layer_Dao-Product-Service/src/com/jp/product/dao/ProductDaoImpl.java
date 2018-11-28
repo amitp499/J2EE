@@ -136,6 +136,52 @@ public class ProductDaoImpl implements ProductDao {
 		
 		
 	}
+
+	@Override
+	public boolean addProducts(Product prd) throws ProductException {
+		
+		String qry = "insert into product (pid,pname,ptype) values (?,?,?)";
+		 
+		Connection con = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		try {
+			con = getConnection();
+			
+			stmt = con.prepareStatement(qry);
+			stmt.setInt(1, prd.getProductId());
+			stmt.setString(2, prd.getProductName());
+			stmt.setString(3, prd.getProductType());
+			
+			int rscnt = stmt.executeUpdate();
+			
+			return rscnt==1?true:false;
+						
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			throw new ProductException("Issue in fetching record",e);
+		}finally{
+			
+			
+				try {
+					
+					if(rs !=null){
+					rs.close();
+					}
+					
+					if(stmt !=null){
+						stmt.close();
+						}
+					
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					throw new ProductException("Issue in closing connection",e);
+				}				
+			}
+		
+	}
 	
 	
 	

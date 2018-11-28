@@ -32,6 +32,9 @@
 				
 				<%} %>
 				
+					<br>
+			
+				
 				
 				
 				
@@ -51,5 +54,6 @@
 				
 				
 			</table>
+			<a href="mainMenu.net">Back To Main Menu</a>
 </body>
 </html>

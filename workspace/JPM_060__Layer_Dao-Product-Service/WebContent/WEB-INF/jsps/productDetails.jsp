@@ -26,7 +26,7 @@
 				
 				</table>
 				<br>
-				<a href="productList.net">Go Back to Employee List</a>
+				<a href="productList.net">Go Back to Product List</a>
 
 </body>
 </html>

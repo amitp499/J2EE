@@ -81,6 +81,35 @@ public class StartPoint extends HttpServlet {
 				break;
 					
 				}
+			
+			case "AddProduct":{
+				
+					jspName = "addProduct";
+				
+				break;
+				
+			}
+			
+			case "SubmitProduct":{
+				
+				String idStr = request.getParameter("pId");
+				String nameStr = request.getParameter("pName");
+				String typeStr = request.getParameter("pType");
+				
+				int pId = Integer.parseInt(idStr);
+				
+				Product ppd = new Product(pId, nameStr, typeStr);
+				boolean isCreated   = service.addNewProducts(ppd);	
+											
+				jspName = "addProduct";
+				
+				String msg = isCreated?"Product Added Successfully":"Product Addition Failed";
+				
+				request.setAttribute("message", msg);
+				
+				break;
+					
+				}
 		
 			
 			}

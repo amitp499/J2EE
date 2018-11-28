@@ -11,5 +11,7 @@ public interface ProductDao {
 	
 	public Product getProductDetails(int pId) throws ProductException;
 	
+	public boolean addProducts(Product prd) throws ProductException;
+	
 
 }
