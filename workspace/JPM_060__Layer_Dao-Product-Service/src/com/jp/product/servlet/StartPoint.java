@@ -76,7 +76,7 @@ public class StartPoint extends HttpServlet {
 				
 				request.setAttribute("productDetail", prd);
 				
-				jspName = "productDetail";
+				jspName = "productDetails";
 				
 				break;
 					

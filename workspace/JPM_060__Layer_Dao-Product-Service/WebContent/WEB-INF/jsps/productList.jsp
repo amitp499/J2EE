@@ -26,7 +26,7 @@
 				
 				<tr>
 					<td> <%=prd.getProductId() %> </td>
-					<td><a href="ProductDetail.net?id="<%=prd.getProductId()%>>Product Info</a></td>
+					<td><a href="ProductDetail.net?id=<%=prd.getProductId()%>">Product Info</a></td>
 					
 				</tr>
 				
