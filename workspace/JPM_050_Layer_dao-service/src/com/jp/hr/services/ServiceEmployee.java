@@ -9,5 +9,9 @@ public interface ServiceEmployee {
 	
 	public ArrayList<Employee> getEmpList() throws HrException;
 	
+	public Employee getEmpDetails(int empId) throws HrException;
+	
+	public boolean addNewEmp(Employee emp) throws HrException;
+	
 	
 }

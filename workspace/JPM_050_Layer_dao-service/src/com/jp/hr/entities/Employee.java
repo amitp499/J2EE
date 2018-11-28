@@ -19,11 +19,11 @@ public class Employee {
 		
 	}
 
-	public int getEmpId() {
+	public int getEmpId() {   ///property name: empId
 		return empId;
 	}
 
-	public void setEmpId(int empId) {
+	public void setEmpId(int empId) {    ///property empId
 		this.empId = empId;
 	}
 

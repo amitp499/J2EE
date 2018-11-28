@@ -149,7 +149,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="JPM_050_Layer_dao-service" path="/JPM_050_Layer_dao-service" reloadable="true" source="org.eclipse.jst.jee.server:JPM_050_Layer_dao-service"/></Host>
+      <Context docBase="JPM_060__Layer_Dao-Product-Service" path="/JPM_060__Layer_Dao-Product-Service" reloadable="true" source="org.eclipse.jst.jee.server:JPM_060__Layer_Dao-Product-Service"/><Context docBase="JPM_050_Layer_dao-service" path="/JPM_050_Layer_dao-service" reloadable="true" source="org.eclipse.jst.jee.server:JPM_050_Layer_dao-service"/></Host>
     </Engine>
   </Service>
 </Server>

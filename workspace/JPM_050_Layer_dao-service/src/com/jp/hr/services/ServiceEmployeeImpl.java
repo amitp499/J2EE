@@ -33,4 +33,20 @@ public class ServiceEmployeeImpl implements ServiceEmployee {
 		return daoEmp.getEmpList();
 	}
 
+
+	@Override
+	public Employee getEmpDetails(int empId) throws HrException {
+		
+		return daoEmp.getEmpDetails(empId);
+		
+	}
+
+	@Override
+	public boolean addNewEmp(Employee emp) throws HrException {
+		
+		return daoEmp.insertNewRecord(emp);
+	}
+
+	
+	
 }
