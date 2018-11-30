@@ -13,4 +13,8 @@ public interface ProductService {
 	
 	public boolean addNewProducts(Product prd) throws ProductException;
 	
+	public boolean deleteProducts(int pId) throws ProductException;
+	
+	public boolean editProducts(int pId, String pName, String pType) throws ProductException;
+	
 }

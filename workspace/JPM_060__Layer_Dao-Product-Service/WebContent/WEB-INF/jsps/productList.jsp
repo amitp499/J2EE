@@ -9,6 +9,8 @@
 <title>Product Details</title>
 </head>
 <body>
+Hello. ${sessionScope.userFullName}
+<a href="Logout.net">Logout</a>
 	<h2>Product List</h2>
 		
 		
@@ -55,5 +57,6 @@
 				
 			</table>
 			<a href="mainMenu.net">Back To Main Menu</a>
+			
 </body>
 </html>

@@ -35,6 +35,18 @@ public class ProductServiceImpl implements ProductService {
 		return prdser.addProducts(prd);
 		
 	}
+
+
+	public boolean deleteProducts(int pId) throws ProductException {
+		
+		return  prdser.deleteProducts(pId);
+	}
+
+	@Override
+	public boolean editProducts(int pId, String pName, String pType) throws ProductException {
+		
+		return prdser.updateProducts(pId, pName, pType);
+	}
 	
 	
 	

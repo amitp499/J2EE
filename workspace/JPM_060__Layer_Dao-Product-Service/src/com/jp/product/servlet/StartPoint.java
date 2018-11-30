@@ -10,15 +10,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.jp.product.entities.Product;
 import com.jp.product.exceptions.ProductException;
 import com.jp.product.service.ProductService;
 import com.jp.product.service.ProductServiceImpl;
 
-/**
- * Servlet implementation class StartPoint
- */
+
 @WebServlet("*.net")  //a generic URL
 public class StartPoint extends HttpServlet {
 	
@@ -39,9 +38,66 @@ public class StartPoint extends HttpServlet {
 		String postfixU = ".jsp";
 		
 		try {
+			
 			switch(command){
 			
 			case "*":
+				
+			case "Welcome":{
+				
+				jspName="Welcome";
+				
+				break;
+			}
+			
+			case "Login":{
+				
+				jspName="Login";
+				
+				break;
+			}
+			
+			case "Logout":{
+				
+				HttpSession session = request.getSession();
+				request.setAttribute("userFullName", session.getAttribute("userFullName"));
+				session.invalidate();
+				
+				jspName="Logout";
+				
+				break;
+			}
+			
+			case "Authenticate":{
+				
+				String userName = request.getParameter("txtUsername");
+				
+				String passowrd = request.getParameter("txtPassword");
+				
+				if (userName.equals("a") && passowrd.equals("a")){
+					
+					String userFullName= "Amit Pandey";
+					
+					HttpSession session = request.getSession();
+					
+					session.setAttribute("userFullName", userFullName);
+					
+					jspName="MainMenu";
+					
+				}else{
+					
+					jspName="Login";
+					
+					String msg = "Invalid UserName/Password";
+					request.setAttribute("message", msg);
+					
+					jspName="Login";
+					
+				}
+				
+								
+				break;
+			}
 				
 			case "mainMenu":{
 			
@@ -81,6 +137,68 @@ public class StartPoint extends HttpServlet {
 				break;
 					
 				}
+			
+			case "deleteProduct":{
+				
+				String idStr = request.getParameter("id");
+				
+				int pId = Integer.parseInt(idStr);
+				
+				boolean delscuccess = service.deleteProducts(pId);
+				
+				String msg = delscuccess?"Product Deleted Successfully":"Product Deletion Failed";
+				
+				request.setAttribute("message", msg);												
+				
+				jspName = "deleteResp";
+				
+				break;
+					
+				}
+			
+			case "updateProduct":{
+				
+				String idStr = request.getParameter("id");
+				String pNameStr = request.getParameter("pName");
+				String pTypeStr = request.getParameter("pType");
+				
+				int pId = Integer.parseInt(idStr);
+				
+				request.setAttribute("pIdmsg", pId );
+				request.setAttribute("pNameStrmsg", pNameStr);
+				request.setAttribute("pTypeStrmsg", pTypeStr);
+				
+				
+				
+				
+				
+				jspName = "UpdateProduct";
+				
+				break;
+					
+				}
+			
+			case "EditSubmit":{
+				
+				String idStr = request.getParameter("pId");
+				String pNameStr = request.getParameter("pName");
+				String pTypeStr = request.getParameter("pType");
+				
+				int pId = Integer.parseInt(idStr);
+				
+				
+				boolean editscuccess = service.editProducts(pId, pNameStr, pTypeStr);
+				
+				String msg = editscuccess?"Product Edited Successfully":"Product Edition Failed";
+				
+				request.setAttribute("message", msg);
+				
+				
+				jspName = "UpdateProduct";
+			
+			break;
+			
+		}
 			
 			case "AddProduct":{
 				

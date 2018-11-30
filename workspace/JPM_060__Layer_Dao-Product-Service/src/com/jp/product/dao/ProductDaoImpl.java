@@ -182,6 +182,91 @@ public class ProductDaoImpl implements ProductDao {
 			}
 		
 	}
+
+	@Override
+	public boolean deleteProducts(int pId) throws ProductException {
+		
+		String qry = "delete from product where pid=?";
+		 
+		Connection con = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		try {
+			con = getConnection();
+			
+			stmt = con.prepareStatement(qry);
+			stmt.setInt(1, pId);
+			int raffected = stmt.executeUpdate();
+			
+			return raffected==1?true:false;
+			
+						
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			throw new ProductException("Issue in fetching record",e);
+		}finally{
+			
+			
+				try {
+									
+					
+					if(stmt !=null){
+						stmt.close();
+						}
+					
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					throw new ProductException("Issue in closing connection",e);
+				}				
+			}
+		
+	}
+
+	@Override
+	public boolean updateProducts(int pId,String pName, String pType) throws ProductException {
+		
+		String qry = "UPDATE product SET pname = ?, ptype= ? WHERE pid ="+pId;
+		 
+		Connection con = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		try {
+			con = getConnection();
+			
+			stmt = con.prepareStatement(qry);
+			stmt.setString(1, pName);
+			stmt.setString(2, pType);
+			//stmt.setInt(3, pId);
+			
+			
+			int raffected = stmt.executeUpdate();
+			
+			return raffected==1?true:false;
+			
+			
+						
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			throw new ProductException("Issue in fetching record",e);
+		}finally{
+			
+			
+				try {
+									
+					
+					if(stmt !=null){
+						stmt.close();
+						}
+					
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					throw new ProductException("Issue in closing connection",e);
+				}				
+			}
+		
+	}
 	
 	
 	

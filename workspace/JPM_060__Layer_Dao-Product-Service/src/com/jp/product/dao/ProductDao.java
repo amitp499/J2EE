@@ -13,5 +13,9 @@ public interface ProductDao {
 	
 	public boolean addProducts(Product prd) throws ProductException;
 	
+	public boolean deleteProducts(int pId) throws ProductException;
+	
+	public boolean updateProducts(int pId, String pName, String pType) throws ProductException;
+	
 
 }

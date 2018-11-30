@@ -10,11 +10,15 @@
 </head>
 <body>
 
+Hello. ${sessionScope.userFullName}
+<a href="Logout.net">Logout</a>
 <table border=1>
 				<tr>
 					<td>Product Id</td>
 					<td>Product Name</td>
 					<td>Product Type</td>
+					<td>Edit Product</td>
+					<td>Delete Product</td>
 					
 				</tr>
 				
@@ -22,8 +26,9 @@
 					<td>${requestScope.productDetail.productId}</td>
 					<td>${requestScope.productDetail.productName}</td>
 					<td>${requestScope.productDetail.productType}</td>
-				</tr>
-				
+					<td><a href="updateProduct.net?id=${requestScope.productDetail.productId}&pName=${requestScope.productDetail.productName}&pType=${requestScope.productDetail.productType}">Edit</a></td>
+					<td><a href="deleteProduct.net?id=${requestScope.productDetail.productId}">Delete</a></td>
+				</tr>				
 				</table>
 				<br>
 				<a href="productList.net">Go Back to Product List</a>

@@ -4,15 +4,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Product Main Page</title>
+<title>Product delete response</title>
 </head>
 <body>
-	<h3 align = "center">Main Menu</h3>
-	Hello. ${sessionScope.userFullName}
-	<a href="Logout.net">Logout</a>
-	<ul>
-		<li><a href="productList.net">View Product List</a></li>
-		<li><a href="AddProduct.net">Add New Product</a></li>
-	</ul>
+Hello. ${sessionScope.userFullName} <br>
+<a href="Logout.net">Logout</a>
+${message}
 </body>
 </html>
