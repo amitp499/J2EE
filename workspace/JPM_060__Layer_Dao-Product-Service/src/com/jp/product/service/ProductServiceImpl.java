@@ -1,5 +1,6 @@
 package com.jp.product.service;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.jp.product.dao.ProductDao;
@@ -11,7 +12,7 @@ public class ProductServiceImpl implements ProductService {
 	
 	private ProductDao prdser;
 	
-	public ProductServiceImpl(){
+	public ProductServiceImpl() throws ProductException{
 		
 		prdser = new ProductDaoImpl();
 		

@@ -1,6 +1,7 @@
 package com.jp.product.servlet;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -25,7 +26,15 @@ public class StartPoint extends HttpServlet {
 	
 	public void init() throws ServletException {
 		
-		service = new ProductServiceImpl();
+		try {
+			
+			service = new ProductServiceImpl();
+			
+		} catch (ProductException e) {
+			
+			// TODO Auto-generated catch block
+			throw new ServletException("Product Exceptio",e);
+		}
 	}
 
 	
@@ -256,7 +265,7 @@ private String getCommand(String uri){
 		
 		if(rtPosi<=leftPosi){
 			
-			return "mainMenu";
+			return "Welcome";
 			
 		}else{
 			

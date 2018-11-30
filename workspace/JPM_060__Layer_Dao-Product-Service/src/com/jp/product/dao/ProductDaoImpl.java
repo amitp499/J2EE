@@ -10,8 +10,30 @@ import java.util.ArrayList;
 
 import com.jp.product.entities.Product;
 import com.jp.product.exceptions.ProductException;
+import com.jp.product.utilities.OracleConnectionFactory;
+
+import oracle.jdbc.pool.OracleDataSource;
 
 public class ProductDaoImpl implements ProductDao {
+	
+	
+	private OracleConnectionFactory factory;
+	private OracleDataSource dataSource;
+	
+	
+	public ProductDaoImpl() throws ProductException{
+		
+		try {
+			factory = OracleConnectionFactory.getInstance();
+			
+			dataSource = factory.getDatasource();
+			
+		} catch (Exception e) {
+			throw new ProductException("Issue in getting connection from factory",e);
+		}
+		
+		
+	}
 	
 	
 	private Connection getConnection() 
@@ -41,7 +63,7 @@ public class ProductDaoImpl implements ProductDao {
 		ResultSet rs = null;
 		
 		try {
-			con = getConnection();
+			con = dataSource.getConnection();
 			stmt = con.createStatement();
 			rs= stmt.executeQuery("Select pid, pname, ptype from product");
 			
@@ -54,7 +76,7 @@ public class ProductDaoImpl implements ProductDao {
 				
 			}
 			
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			throw new ProductException("Issue in fetching record",e);
 		}finally{
@@ -68,7 +90,12 @@ public class ProductDaoImpl implements ProductDao {
 					
 					if(stmt !=null){
 						stmt.close();
-						}
+					}
+					
+					if(con !=null){
+						
+						con.close();
+					}
 					
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
@@ -92,7 +119,7 @@ public class ProductDaoImpl implements ProductDao {
 		ResultSet rs = null;
 		
 		try {
-			con = getConnection();
+			con = dataSource.getConnection();
 			
 			stmt = con.prepareStatement(qry);
 			stmt.setInt(1, pId);
@@ -110,7 +137,7 @@ public class ProductDaoImpl implements ProductDao {
 				
 			}
 			
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			throw new ProductException("Issue in fetching record",e);
 		}finally{
@@ -124,7 +151,11 @@ public class ProductDaoImpl implements ProductDao {
 					
 					if(stmt !=null){
 						stmt.close();
-						}
+					}
+					
+					if(con !=null){
+						con.close();
+					}
 					
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
@@ -147,7 +178,7 @@ public class ProductDaoImpl implements ProductDao {
 		ResultSet rs = null;
 		
 		try {
-			con = getConnection();
+			con = dataSource.getConnection();
 			
 			stmt = con.prepareStatement(qry);
 			stmt.setInt(1, prd.getProductId());
@@ -159,7 +190,7 @@ public class ProductDaoImpl implements ProductDao {
 			return rscnt==1?true:false;
 						
 			
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			throw new ProductException("Issue in fetching record",e);
 		}finally{
@@ -173,7 +204,11 @@ public class ProductDaoImpl implements ProductDao {
 					
 					if(stmt !=null){
 						stmt.close();
-						}
+					}
+					
+					if(con !=null){
+						con.close();
+					}
 					
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
@@ -233,7 +268,7 @@ public class ProductDaoImpl implements ProductDao {
 		ResultSet rs = null;
 		
 		try {
-			con = getConnection();
+			con = dataSource.getConnection();
 			
 			stmt = con.prepareStatement(qry);
 			stmt.setString(1, pName);
@@ -247,7 +282,7 @@ public class ProductDaoImpl implements ProductDao {
 			
 			
 						
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			throw new ProductException("Issue in fetching record",e);
 		}finally{
@@ -258,7 +293,11 @@ public class ProductDaoImpl implements ProductDao {
 					
 					if(stmt !=null){
 						stmt.close();
-						}
+					}
+					
+					if(con !=null){
+						con.close();
+					}
 					
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
