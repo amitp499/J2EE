@@ -170,12 +170,13 @@ public class FrontController extends HttpServlet {
 			
 			case "submitJoinee": {
 				
-				String empIdStr = request.getParameter("empId");
+				//String empIdStr = request.getParameter("empId");
 				String firstNameStr = request.getParameter("firstName");
 				String lastNameStr = request.getParameter("lastName");
-				int empIdc = Integer.parseInt(empIdStr);
+				//int empIdc = Integer.parseInt(empIdStr);
 				
-				Employee emp = new Employee(empIdc,firstNameStr, lastNameStr );
+				//Employee emp = new Employee(empIdc,firstNameStr, lastNameStr );
+				Employee emp = new Employee(firstNameStr, lastNameStr );
 				
 				boolean isSuccessFull = services.addNewEmp(emp);
 				

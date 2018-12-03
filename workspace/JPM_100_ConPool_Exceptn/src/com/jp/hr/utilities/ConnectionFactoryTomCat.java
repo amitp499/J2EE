@@ -25,7 +25,7 @@ public class ConnectionFactoryTomCat {
 			Context envContext  = (Context)initContext.lookup("java:/comp/env");
 			 ds = (DataSource)envContext.lookup("jdbc/myoracle");
 		} catch (NamingException e) {
-			// TODO Auto-generated catch block
+			
 			throw new HrException("Problem in connecting to JNDI",e);
 		}
 		

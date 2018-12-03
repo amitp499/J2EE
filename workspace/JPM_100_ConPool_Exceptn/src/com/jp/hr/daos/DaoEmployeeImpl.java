@@ -22,8 +22,8 @@ import com.jp.hr.utilities.ConnectionFactoryTomCat;
 
 public class DaoEmployeeImpl implements DaoEmployee{
 	
-	//private ConnectionFactory factory;    //oracle data source
-	private ConnectionFactoryTomCat factory;
+	private ConnectionFactory factory;    //oracle data source
+	//private ConnectionFactoryTomCat factory;
 	private DataSource dataSource;   //DataSource is an interface , Connection pool example
 	
 	
@@ -31,9 +31,9 @@ public class DaoEmployeeImpl implements DaoEmployee{
 		
 		try {
 			
-			//factory = ConnectionFactory.getInstance(); //oracle data source
+			factory = ConnectionFactory.getInstance(); //oracle data source
 			
-			factory = ConnectionFactoryTomCat.getInstance();
+			//factory = ConnectionFactoryTomCat.getInstance();
 			
 			dataSource = factory.getDatasource();
 			
@@ -148,7 +148,7 @@ public class DaoEmployeeImpl implements DaoEmployee{
 			
 			 //connect = getConnection();
 			connect = dataSource.getConnection();
-			 stmt =connect.createStatement();
+			 stmt = connect.createStatement();
 			 rs = stmt.executeQuery("Select empid,firstname, lastname from emp");
 			
 			while(rs.next()){
@@ -208,14 +208,15 @@ public class DaoEmployeeImpl implements DaoEmployee{
 		
 		try {
 			
-				String qry = "Insert into  emp(empid, firstname, lastname) values (?,?,?) ";
+				String qry = "Insert into  emp(empid, firstname, lastname) values (seqPID.nextval,?,?) "; //oracle squence
+				//String qry = "Insert into  emp(empid, firstname, lastname) values (?,?,?) ";   //without oracle sequence
 			 //connect = getConnection();
 				connect = dataSource.getConnection();
 			 
 			 stmt =connect.prepareStatement(qry);
-			 stmt.setInt(1, emp.getEmpId());
-			 stmt.setString(2, emp.getFirstName());
-			 stmt.setString(3, emp.getLastName());
+			 //stmt.setInt(1, emp.getEmpId()); //implementation of oracle sequence
+			 stmt.setString(1, emp.getFirstName());
+			 stmt.setString(2, emp.getLastName());
 			 
 			 int recInserted = stmt.executeUpdate();
 			 return recInserted==1?true:false;

@@ -13,8 +13,9 @@
 	<form action="submitJoinee.do" method="post">
 	${ message }
 	<table>
-		<tr><th>Emp Id</th>
-		<td><input type="text" name="empId"></td>
+		<tr>
+		<!-- <th>Emp Id</th>
+		<td><input type="text" name="empId"></td> -->
 		</tr>
 		<tr><th>First Name</th>
 		<td><input type="text" name="firstName"></td>
